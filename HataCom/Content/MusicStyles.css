@@ -1,0 +1,404 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: white;
+    background: rgb(255, 255, 207);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.btnPlayPauseSongItem, .range, .btnPlayPause, .btnPlayPause2, .btnPrevious, .btnNext, .btnStop, .mute, .volume {
+    cursor: pointer;
+}
+
+/*=========================SongItem============================*/
+
+.wrp {
+    max-width: 1356px;
+    width: 100%;
+    margin: 141px auto;
+}
+
+.songItem {
+    background: rgba(20, 20, 20, 0.7);
+    width: 100%;
+    height: 75px;
+    display: flex;
+    margin-bottom: 35px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    position: relative;
+    transition: .2s;
+}
+
+.btnPlayPauseSongItem {
+    background: url(../Content/player/PlaySongItem.svg) center no-repeat;
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    transition: .2s;
+}
+
+.logoSongItem {
+    background: url(
+        img/Mona-Lisa-256x256.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 75px;
+    height: 75px;
+    box-shadow: 6px 0px 15px rgba(0, 0, 0, 0.7);
+    transition: .2s;
+}
+
+.songNameSongItem {
+    position: absolute;
+    width: 150px;
+    height: 55px;
+    margin: 10px auto;
+    font-size: 18px;
+    line-height: 27px;
+    left: 90px;
+    transition: .2s;
+}
+
+.authorNameSongItem {
+    font-size: 20px;
+    transition: .2s;
+}
+
+.barSongItem {
+    position: relative;
+    width: 1095px;
+    height: 40px;
+    padding: 0;
+    margin-left: 160px;
+    overflow: hidden;
+    transition: .2s;
+}
+
+.setTimeSongItem {
+    position: absolute;
+    top: 0;
+    background: white;
+    color: black;
+    font-size: 12px;
+    padding: 3px;
+    display: none;
+}
+
+.rangeSongItem, .progressSongItem, .loadSongItem {
+    height: 4px;
+    padding: 0;
+    width: 100%;
+    transition: .2s;
+}
+
+.rangeSongItem {
+    background: #adadadb3;
+    margin-top: 36px;
+    transition: .2s;
+}
+
+.progressSongItem, .loadSongItem {
+    position: absolute;
+    left: -100%;
+    bottom: 0;
+}
+
+.progressSongItem {
+    background: #0274B5;
+    z-index: 3;
+}
+
+.loadSongItem {
+    background: #919191;
+}
+
+.timeSongItem, .durationSongItem {
+    position: absolute;
+    margin-top: 50px;
+    left: 1308px;
+    transition: .2s;
+}
+
+.timeSongItem {
+    left: 1280px;
+    display: none;
+}
+
+.slashSongItem{
+    display: none;
+}
+
+/*=========================SongItemActive============================*/
+
+.songItemActive {
+    background: rgba(20, 20, 20, 0.7) url(../Content/player/cow.jpg) center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 189px;
+    display: flex;
+    margin-bottom: 35px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    position: relative;
+    transition: .2s;
+}
+
+.btnPlayPauseSongItemActive {
+    background: url(../Content/player/PauseBigSongItem.svg) center no-repeat;
+    position: absolute;
+    width: 177px;
+    height: 189px;
+    z-index: 57;
+    transition: .2s;
+}
+
+.btnPlayPauseSongItemActive2 {
+    background: url(../Content/player/PlayBigSongItem.svg) center no-repeat;
+    position: absolute;
+    background-size: 60%;
+    width: 177px;
+    height: 189px;
+    z-index: 57;
+    transition: .2s;
+}
+
+.logoSongItemActive {
+    background: url(../Content/player/Mona-Lisa-256x256.jpg) center no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 56;
+    width: 177px;
+    height: 189px;
+    box-shadow: 6px 0px 15px rgba(0, 0, 0, 0.7);
+    transition: .2s;
+}
+
+.songNameSongItemActive {
+    position: absolute;
+    width: 347px;
+    height: 79px;
+    margin-top: 25px;
+    margin-left: 105px;
+    font-size: 25px;
+    line-height: 30px;
+    left: 90px;
+    transition: .2s;
+}
+
+.authorNameSongItemActive {
+    font-size: 36px;
+    transition: .2s;
+}
+
+.barSongItemActive {
+    position: relative;
+    width: 1135px;
+    height: 98px;
+    padding: 0;
+    margin-left: 196px;
+    overflow: hidden;
+    transition: .2s;
+}
+
+.setTimeSongItemActive {
+    position: absolute;
+    top: 0;
+    background: white;
+    color: black;
+    font-size: 12px;
+    display: none;
+}
+
+.rangeSongItemActive, .progressSongItemActive, .loadSongItemActive {
+    height: 5px;
+    padding: 0;
+    width: 100%;
+    transition: .2s;
+}
+
+.rangeSongItemActive {
+    background: #ffffffb3;
+    margin-top: 93px;
+}
+
+.progressSongItemActive, .loadSongItemActive {
+    position: absolute;
+    left: -100%;
+    bottom: 0;
+}
+
+.progressSongItemActive {
+    background: #0274B5;
+    z-index: 3;
+}
+
+.loadSongItemActive {
+    background: #919191;
+}
+
+.timeSongItemActive, .durationSongItemActive {
+    position: absolute;
+    margin-top: 105px;
+    left: 1308px;
+    transition: .2s;
+}
+
+.timeSongItemActive {
+    left: 1280px;
+}
+
+.slashSongItemActive{
+    position: absolute;
+    margin-top: 105px;
+    left: 1302px;
+}
+
+/*=========================PANEL============================*/
+
+.panel {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 51px;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: .7s;
+}
+
+.bar {
+    position: relative;
+    width: 100%;
+    height: 4px;
+}
+
+.setTime {
+    position: absolute;
+    margin-bottom: 100px;
+    background: rgb(2, 75, 117);
+    color: rgb(255, 255, 255);
+    height: 20px;
+    width: 25px;
+    font-size: 16px;
+    display: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.range, .progress, .load {
+    width: 100%;
+    height: 4px;
+    padding: 0;
+}
+
+.range {
+    background: #ffffffb3;
+}
+
+.progress, .load {
+    position: absolute;
+    left: -100%;
+    transition: .2s;
+}
+
+.progress {
+    background: #0274B5;
+    z-index: 3;
+}
+
+.load {
+    background: #919191;
+}
+
+.songName {
+    position: absolute;
+    line-height: 27px;
+    margin-top: 13px;
+    left: 3%;
+    font-size: 18px;
+}
+
+.authorName {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mute {
+    position: absolute;
+    background: url(../Content/player//Volume.svg) center no-repeat;
+    width: 30px;
+    height: 25px;
+    left: 350px;
+    margin-top: 15px;
+    transition: background .1s;
+}
+
+.volume {
+    -webkit-appearance: none;
+    position: absolute;
+    border: 1px solid #ffffff80;
+    background: -webkit-linear-gradient(left, #ffffff80 0%, #ffffff80 100%);
+    width: 110px;
+    height: 6px;
+    border-radius: 3px;
+    left: 390px;
+    margin-top: 25px;
+}
+
+.volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: rgb(255, 255, 255);
+    width: 14px;
+    height: 10px;
+    border-radius: 3px;
+}
+
+.songControl {
+    display: flex;
+    position: absolute;
+    margin-top: 13px;
+    left: 44.5%;
+}
+
+.btnPrevious {
+    width: 25px;
+    height: 25px;
+    margin-right: 45px;
+    background: url(../Content/player/Previous.svg) center no-repeat;
+}
+
+.btnPlayPause {
+    width: 25px;
+    height: 25px;
+    margin-right: 45px;
+    background: url(../Content/player/Pause.svg) center no-repeat;
+    transition: .2s;
+}
+
+.btnNext {
+    width: 25px;
+    height: 25px;
+    margin-right: 45px;
+    background: url(../Content/player/Next.svg) center no-repeat;
+}
+
+.btnStop {
+    width: 25px;
+    height: 25px;
+    background: url(../Content/player/Stop.svg) center no-repeat;
+}
+
+.time, .duration {
+    position: absolute;
+    margin-top: 16px;
+    left: 1800px;
+}
+
+.duration {
+    left: 1822px;
+}
