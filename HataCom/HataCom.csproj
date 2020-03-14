@@ -192,9 +192,7 @@
     <Content Include="Views\Home\Music.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\img\TestAlbum\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
