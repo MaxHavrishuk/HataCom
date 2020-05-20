@@ -1,7 +1,10 @@
-﻿using BusinessLogic.Models;
+﻿using BusinessLogic.Contexts;
+using BusinessLogic.DbInitialize;
+using BusinessLogic.Models;
 using HataCom.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -9,24 +12,88 @@ namespace HataCom.Repositories
 {
     public class PhotoRepository : IRepository<Photo>
     {
-        public void Add(Photo entity)
-        {
-            throw new NotImplementedException();
-        }
+		private HataContext db = new HataContext();
 
-        public Photo Get(int id)
-        {
-            throw new NotImplementedException();
-        }
+		DbInitializer dbInitializer = new DbInitializer();//ініціалізатор для уникання міграцій (dropAndCreateDB) - створення екземплеяра класа
 
-        public IEnumerable<Photo> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+		public Photo Get(int id)
+		{
+			return db.Photos.Find(id);
+		}
 
-        public void Remove(Photo entity)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		public IEnumerable<Photo> GetAll()
+		{
+			return db.Photos;
+		}
+
+		public IEnumerable<Photo> GetPhotosByAlbumId(int albumId)
+		{
+			var photos = db.Photos.Where(e => e.PhotoAlbumId == albumId);
+			return photos;
+		}
+
+		public bool Remove(int id)
+		{
+			Photo photo = db.Photos.Find(id);
+			try
+			{
+				db.Photos.Remove(photo);
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+		public bool Add(Photo entity)
+		{
+			try
+			{
+				db.Photos.Add(entity);
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+		public bool Update(Photo enitity)
+		{
+			try
+			{
+				db.Entry(enitity).State = EntityState.Modified;
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+		public void Save()
+		{
+			db.SaveChanges();
+		}
+
+		private bool disposed = false;
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!this.disposed)
+			{
+				if (disposing)
+				{
+					db.Dispose();
+				}
+			}
+			this.disposed = true;
+		}
+
+		public void Dispose()
+		{
+			Dispose(true);
+			GC.SuppressFinalize(this);
+		}
+	}
 }

@@ -14,9 +14,18 @@ namespace BusinessLogic.Models
 		public int PhotoId { get; set; }
 		public int UserId { get; set; }
 		public string Title { get; set; }
+
 		public string ImageLink { get; set; }
 
+
+		/// <summary>
+		/// True = 1 False = 0
+		/// </summary>
+		public int IsCover { get; set; }
+
+
 		public int? PhotoAlbumId { get; set; }
+
 		[ForeignKey("PhotoAlbumId")]
 		public PhotoAlbum PhotoAlbum { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Models;
+﻿using BusinessLogic.DbInitialize;
+using BusinessLogic.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -14,7 +15,10 @@ namespace BusinessLogic.Contexts
 	public class HataContext : DbContext
 	{
 		//public HataContext() : base("name=DefaultConnection") { } // передати connrctionString Name для підключення до БД.
-
+		static HataContext()//ініціалізація бд в статичному конструкторі класа контекста.
+		{
+			Database.SetInitializer<HataContext>(new DbInitializer());
+		}
 		public DbSet<PhotoAlbum> PhotoAlbums { get; set; }
 		public DbSet<Photo> Photos { get; set; }
 

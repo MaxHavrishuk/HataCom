@@ -12,9 +12,13 @@ namespace HataCom.Interfaces
 
         bool Add(T entity);
 
-        bool Remove(T entity);
+        bool Remove(int id);
 
         IEnumerable<T> GetAll();
+
+		bool Update(T enitity);
+
+		void Save();
     }
 
  
