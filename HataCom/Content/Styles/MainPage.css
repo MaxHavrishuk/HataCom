@@ -39,7 +39,7 @@ input, select, textarea {
 .menu-left-top {
     min-height: 50vh;
     text-align: center;
-    background: url(../Content/img/arhiv.jpg) no-repeat center top;
+    background: url(../img/arhiv.jpg) no-repeat center top;
     background-position: top center;
     position: relative;
     background-size: 100%;
@@ -50,7 +50,7 @@ input, select, textarea {
 .menu-right-top {
     min-height: 50vh;
     text-align: center;
-    background: url(../Content/img/fot.jpg) no-repeat center top;
+    background: url(../img/fot.jpg) no-repeat center top;
     background-position: top center;
     position: relative;
     background-size: 100%;
@@ -61,7 +61,7 @@ input, select, textarea {
 .menu-left-bottom {
     min-height: 50vh;
     text-align: center;
-    background: url(../Content/img/musik.jpg) no-repeat center top;
+    background: url(../img/musik.jpg) no-repeat center top;
     background-position: top center;
     position: relative;
     background-size: 100%;
@@ -72,7 +72,7 @@ input, select, textarea {
 .menu-right-bottom {
     min-height: 50vh;
     text-align: center;
-    background: url(../Content/img/vid.jpg) no-repeat center top;
+    background: url(../img/vid.jpg) no-repeat center top;
     background-position: top center;
     position: relative;
     background-size: 100%;

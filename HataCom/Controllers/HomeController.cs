@@ -53,28 +53,30 @@ namespace HataCom.Controllers
 		[HttpPost]
 		public ActionResult Upload(AddAlbumView model)
 		{
+			
 			if (ModelState.IsValid)
 			{
 
 				//Потрібно зробити перевірку на формати!!! можливо покращити перевірку на наявність файлів
-				try
-				{
+				//Вдосконалити перевірку на те чи обрана обложка
+			
 					List<Photo> photos = new List<Photo>();
+					int c = 0;
 					foreach (var file in model.Files)
 					{
 						string fileName = Path.GetFileName(file.FileName);
 						var finalName = Guid.NewGuid() + file.ContentType.Replace('/', '.');
 						string link = Server.MapPath(PathsToContent.PhotosPath + finalName);
 						file.SaveAs(link);
-						photos.Add(new Photo() { ImageLink = PathsToContent.PhotosPath + finalName, Title = "test" });
+						photos.Add(new Photo() { ImageLink = PathsToContent.PhotosPath + finalName, Title = model.PhotoAlbum.Photos[c].Title, IsCover = model.PhotoAlbum.Photos[c].IsCover });
+						c++;
 					}
-					photos[0].IsCover = 1;
-					photoAlbums.AddWithPhotos(model.PhotoAlbum, photos);
-				}
-				catch (Exception ex)
-				{
-					return RedirectToAction("PhotoAlbum");
-				}
+					//photos[0].IsCover = true;//!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+					model.PhotoAlbum.Photos = photos;
+					photoAlbums.AddWithPhotos(model.PhotoAlbum);
+				
+				
 			}
 			//Фізичне завнатаження файлі на сервер
 

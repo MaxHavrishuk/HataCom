@@ -1,148 +1,129 @@
 ﻿@*@model IEnumerable<BusinessLogic.PhotoAlbum>*@
+
+@Styles.Render("~/PhotoAlbumsPage/css")
+
 @using BusinessLogic.Models.ViewModels
 @model AddAlbumView
 
-
-@*<body class="bg-photo">
-    <div>
-        <h1>Test</h1>
-
-        @foreach (var item in Model)
-        {
-            <div class="container">
-                <div class="row mx-auto"></div>
-                <div class="col-sm-6 parent-block" style="height: 400px; width: 400px">
-                    <p>@item.Title</p>
-                    <a href="/Home/Photos/@item.PhotoAlbumId"><img src="@item.IconLink" width="150" height="150" /></a>
-                </div>
-            </div>
-
-        }
-    </div>
-    @{
-        ViewBag.Title = "Upload";
-    }
-    <h3>Выберите файл для загрузки</h3>
-    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <input type="file" name="upload" /><br>
-        <input type="submit" value="Загрузить" />
-    }*@
-
-
 <!--СПІЛЬНИЙ КОНТЕЙНЕР "ФОТО АЛЬБОМИ"-->
 <div class="container">
-    <!--СПІЛЬНИЙ РЯДОК "ФОТО АЛЬБОМИ"-->
-    <div class="row">
+    <!--РЯДОК ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
+    <div class="row" id="" style="margin-bottom: 2rem;">
         <!--СТОВПЕЦЬ ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
-        <div class="col-12 col-md-2">
-            <!--РЯДОК ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
-            <div class="row" style="margin-bottom: 1rem;">
-                <!--КНОПКА "ДОДАТИ АЛЬБОМ"-->
-                <button type="button" class="btn btn-primary btn-sm shadow-sm" data-toggle="modal"
-                        data-target="#exampleModal" data-whatever="@@mdo">
-                    Додати альбом
-                </button>
-                <!--/КНОПКА "ДОДАТИ АЛЬБОМ"-->
-                <!--МОДАЛЬНЕ ВІКНО КНОПКИ "ДОДАТИ АЛЬБОМ"-->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Додати альбом</h5>
+        <div class="col-12">
+            <!--КНОПКА "ДОДАТИ АЛЬБОМ"-->
+            <button type="button" class="btn btn-primary btn-lg " id="modalButton"
+                    data-toggle="modal" data-target=".bd-example-modal-lg">
+                Додати
+                альбом
+            </button>
+        </div>
+    </div>
+    <!--/КНОПКА "ДОДАТИ АЛЬБОМ"-->
 
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
+    <div class="modal fade bd-example-modal-lg" data-backdrop="static" tabindex="-1"
+         role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Додати альбом</h5>
 
-                                @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                {
-                                    @Html.AntiForgeryToken()
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
-                                    //Title
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                    <div class="form-group">
-                                        @*<label for="recipient-name" class="col-form-label">Назва:</label>*@
-                                        @*<input type="text" class="form-control" id="recipient-name" name="albumModels.PhotoAlbum.Title">*@
-                                        @Html.LabelFor(model => model.PhotoAlbum.Title, htmlAttributes: new { @class = "col-form-label" })
-                                        @Html.EditorFor(model => model.PhotoAlbum.Title, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.PhotoAlbum.Title, "", new { @class = "text-danger" })
+                    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        //Title
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @*<label for="recipient-name" class="col-form-label">Назва:</label>*@
+                            @*<input type="text" class="form-control" id="recipient-name" name="albumModels.PhotoAlbum.Title">*@
+                            @Html.LabelFor(model => model.PhotoAlbum.Title, htmlAttributes: new { @class = "col-form-label" })
+                            @Html.EditorFor(model => model.PhotoAlbum.Title, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhotoAlbum.Title, "", new { @class = "text-danger" })
+                        </div>
+                        //Description
+                        <div class="form-group">
+                            @*<label for="message-text" class="col-form-label">Опис:</label>*@
+                            @*<textarea class="form-control" id="message-text" name="PhotoAlbum.Description"></textarea>*@
+
+                            @Html.LabelFor(model => model.PhotoAlbum.Description, htmlAttributes: new { @class = "col-form-label" })
+                            @Html.TextAreaFor(model => model.PhotoAlbum.Description, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => Model.PhotoAlbum.Description, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="input-group">
+                                    <div class="custom-file">
+
+                                        <input type="file" class="custom-file-input" id="fileInputControl" accept="image/*" onchange="onChange(event)" name="Files"
+                                               aria-describedby="inputGroupFileAddon01" multiple>
+                                        <label class="custom-file-label" for="inputGroupFile01">Вибрати фото</label>
+
+                                        @*<input type="submit" value="Додати" class="btn btn-primary" />
+                                            <input type="file" id="files" name="Files" multiple />*@
                                     </div>
-                                    //Description
-                            <div class="form-group">
-                                @*<label for="message-text" class="col-form-label">Опис:</label>*@
-                                @*<textarea class="form-control" id="message-text" name="PhotoAlbum.Description"></textarea>*@
-
-                                @Html.LabelFor(model => model.PhotoAlbum.Description, htmlAttributes: new { @class = "col-form-label" })
-                                @Html.TextAreaFor(model => model.PhotoAlbum.Description, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => Model.PhotoAlbum.Description, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">
-                                            Закрити
-                                        </button>
-
-                                        <input type="file" name="Files" multiple /><br>
-                                        <input type="submit" value="Додати" class="btn btn-primary" />
-
-                                        @*<button type="button" class="btn btn-primary">Додати</button>*@
-                                    </div>
-                                }
+                            @*<button type="button" class="btn btn-primary">Додати</button>*@
+                            <div class="row output"></div>
+                            <div class="row">
+                                <button type="button" class="btn btn-secondary btn-md btn-block" data-dismiss="modal">Закрити</button>
+                                <button type="submit" class="btn btn-primary btn-md btn-block" @*disabled*@>Додати</button>
                             </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+
+    <!--/СТОВПЕЦЬ ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
+    <!--СПІЛЬНИЙ РЯДОК ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
+    <!--РЯДОК ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
+    <!--СПІЛЬНИЙ СТОВПЕЦЬ ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
+    <!--СПІЛЬНИЙ РЯДОК ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
+    <div class="row">
+        <!--ALBUM ITEM-->
+        @foreach (var item in Model.PhotoAlbums)
+        {
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 albumItem">
+                <div class="card mb-5">
+                    <img src="@item.IconLink"
+                         class="card-img" alt="...">
+                    <div class="overlay"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Альбом 1</h5>
+                        <p class="card-text">@item.Description</p>
+                        <a href="/Home/Photos/@item.PhotoAlbumId" class="stretched-link"></a>
+                    </div>
+                    <div class="btn-group dropup">
+                        <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            Dropup
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </div>
                 </div>
-                <!--/МОДАЛЬНЕ ВІКНО КНОПКИ "ДОДАТИ АЛЬБОМ"-->
             </div>
-            <!--/РЯДОК ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
-
-        </div>
-        <!--/СТОВПЕЦЬ ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
-        <!--СПІЛЬНИЙ СТОВПЕЦЬ ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
-        <div class="col-12 col-md-10">
-            <!--СПІЛЬНИЙ РЯДОК ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
-            <div class="row">
-                @foreach (var item in Model.PhotoAlbums)
-                {
-                    <!--ALBUM ITEM-->
-
-                    <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom: 2rem;">
-                        <div class="card shadow-sm tooltiptext"
-                             style="width: 15rem; height: 25rem; background: url(@item.IconLink);   background-size: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title" style="color: burlywood;">@item.Title</h5>
-
-                                <div class="dropup">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
-                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        Опції
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" style="color: green;" href="/Home/Photos/@item.PhotoAlbumId">Перейти</a>
-                                        <a class="dropdown-item" href="#">Редагувати альбом</a>
-                                        <a class="dropdown-item" style="color: red;" href="#">Видалити альбом</a>
-                                    </div>
-                                </div>
-                                <p style="margin-top: 2em">@item.Description</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--/ALBUM ITEM-->
-                }
-
-            </div>
-            <!--/СПІЛЬНИЙ РЯДОК ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
-        </div>
-        <!--/СПІЛЬНИЙ СТОВПЕЦЬ ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
+        }
+        <!--/ALBUM ITEM-->
     </div>
-    <!--/СПІЛЬНИЙ РЯДОК "ФОТО АЛЬБОМИ"-->
+    <!--/СПІЛЬНИЙ РЯДОК ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
+    <!--/СПІЛЬНИЙ СТОВПЕЦЬ ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
 </div>
 
+
+@Scripts.Render("~/PhotoAlbums.js")

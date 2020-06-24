@@ -17,11 +17,7 @@ namespace BusinessLogic.Models
 
 		public string ImageLink { get; set; }
 
-
-		/// <summary>
-		/// True = 1 False = 0
-		/// </summary>
-		public int IsCover { get; set; }
+		public bool IsCover { get; set; }
 
 
 		public int? PhotoAlbumId { get; set; }

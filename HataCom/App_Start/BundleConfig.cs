@@ -19,10 +19,25 @@ namespace HataCom
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/modernizr-*"));
 
-		
+			//STYLES FOR SITE BEGIN
+			//Main Page styles CSS
+			bundles.Add(new StyleBundle("~/MainPage/css").Include(
+					  "~/Content/Styles/MainPage.css"
+					  ));
 
-			bundles.Add(new StyleBundle("~/Content/css").Include(
-					  "~/Content/Site.css"));
+			
+
+			//PhotoAlbums Page styles CSS
+			bundles.Add(new StyleBundle("~/PhotoAlbumsPage/css").Include(
+					  "~/Content/Styles/PhotoAlbums.css"
+					  ));
+			//STYLES FOR SITE END
+
+
+			//SCRIPTS FOR SITE BEGIN
+			bundles.Add(new ScriptBundle("~/PhotoAlbums.js").Include(
+				"~/Scripts/CustomScripts/PhotoAlbums.js"));
+			//SCRIPTS FOR SITE END
 
 
 

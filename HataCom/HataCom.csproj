@@ -136,23 +136,9 @@
     <Content Include="Content\img\fot.jpg" />
     <Content Include="Content\img\musik.jpg" />
     <Content Include="Content\img\vid.jpg" />
-    <Content Include="Content\MusicStyles.css" />
-    <Content Include="Content\player\cow.jpg" />
-    <Content Include="Content\player\Mona-Lisa-256x256.jpg" />
-    <Content Include="Content\player\Mute.svg" />
-    <Content Include="Content\player\Next.svg" />
-    <Content Include="Content\player\Pause.svg" />
-    <Content Include="Content\player\PauseBigSongItem.png" />
-    <Content Include="Content\player\PauseBigSongItem.svg" />
-    <Content Include="Content\player\Play.svg" />
-    <Content Include="Content\player\PlayBigSongItem.png" />
-    <Content Include="Content\player\PlayBigSongItem.svg" />
-    <Content Include="Content\player\PlaySongItem.svg" />
-    <Content Include="Content\player\Previous.svg" />
-    <Content Include="Content\player\Stop.svg" />
-    <Content Include="Content\player\Volume.svg" />
-    <Content Include="Content\player\Без імені.png" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\CustomScripts\PhotoAlbums.js" />
+    <Content Include="Content\Styles\PhotoAlbums.css" />
+    <Content Include="Content\Styles\MainPage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -165,7 +151,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\musicPlayer.js" />
+    <Content Include="Scripts\CustomScripts\musicPlayer.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -189,7 +175,6 @@
     <Folder Include="Content\mediaContent\Msuic\" />
     <Folder Include="Content\mediaContent\Photo\" />
     <Folder Include="Content\mediaContent\Video\" />
-    <Folder Include="Content\testFiles\" />
     <Folder Include="Views\PhotoAlbums\" />
   </ItemGroup>
   <ItemGroup>

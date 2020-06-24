@@ -58,19 +58,33 @@ namespace BusinessLogic.BusinessLogicMethods
 			}
 		}
 
-		public bool AddWithPhotos(PhotoAlbum entity, IEnumerable<Photo> photos)
+		public bool AddWithPhotos(PhotoAlbum entity)
 		{
 			try
 			{
-				db.PhotoAlbums.Add(entity).IconLink = photos.Where(e=>e.IsCover == 1).FirstOrDefault().ImageLink;
-				
-				db.SaveChanges();
-
-				foreach (var photo in photos)
+				//Перевірка чи є в списку фото з відміткою про обложку, якщо ні то обрати перше фото
+				//db.PhotoAlbums.Add(entity).IconLink = photos.Where(e => e.IsCover == 1).FirstOrDefault().ImageLink;
+				if (entity.Photos.Any(e=>e.IsCover == true))
 				{
-					db.Photos.Add(new Photo() { PhotoAlbumId = entity.PhotoAlbumId, Title = photo.Title, ImageLink = photo.ImageLink });
+					entity.IconLink = entity.Photos.Where(e => e.IsCover == true).FirstOrDefault().ImageLink;
+					db.PhotoAlbums.Add(entity);
 					db.SaveChanges();
 				}
+				else
+				{
+					entity.IconLink = entity.Photos.First().ImageLink;
+					db.PhotoAlbums.Add(entity);
+					db.SaveChanges();
+				}
+				
+			
+
+
+				//foreach (var photo in photos)
+				//{
+				//	db.Photos.Add(new Photo() { PhotoAlbumId = entity.PhotoAlbumId, Title = photo.Title, ImageLink = photo.ImageLink });
+				//	db.SaveChanges();
+				//}
 
 				return true;
 			}

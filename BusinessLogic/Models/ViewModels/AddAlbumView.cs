@@ -15,5 +15,6 @@ namespace BusinessLogic.Models.ViewModels
 		//Дані для завантаження
 		public PhotoAlbum PhotoAlbum { get; set; }
 		public IEnumerable<HttpPostedFileBase> Files { get; set; }
+
 	}
 }
