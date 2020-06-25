@@ -14,11 +14,11 @@ namespace BusinessLogic.Contexts
 	/// </summary>
 	public class HataContext : DbContext
 	{
-		// В действительности не нужно добавлять строку подключения MovieDBContext. 
+		// В действительности не нужно добавлять строку подключения HataContext. 
 		// Если строка подключения не указана, Entity Framework создаст базу данных 
 		// LocalDB в каталоге Users с полным именем класса DbContext 
 		// (в данном случае BusinessLogic.Contexts.HataContext). 
-		
+
 		//public HataContext() : base("name=DefaultConnection") { } // передати connrctionString Name для підключення до БД.
 		static HataContext()//ініціалізація бд в статичному конструкторі класа контекста.
 		{
