@@ -20,4 +20,5 @@ public static string GetPasswordHashWithSalt( string login, string password )
             string hash = BitConverter.ToString(cryptoTransformSHA256.ComputeHash(buffer)).Replace("-", "");
             return hash;
         }
+        !!!!!!!!!!!!!!!
     
