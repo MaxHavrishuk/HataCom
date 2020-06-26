@@ -14,26 +14,25 @@
             <!--КНОПКА "ДОДАТИ АЛЬБОМ"-->
             <button type="button" class="btn btn-primary btn-lg " id="modalButton"
                     data-toggle="modal" data-target=".bd-example-modal-lg">
-                Додати
-                альбом
+                Додати альбом
             </button>
+            <!--/КНОПКА "ДОДАТИ АЛЬБОМ"-->
         </div>
+        <!--/СТОВПЕЦЬ ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
     </div>
-    <!--/КНОПКА "ДОДАТИ АЛЬБОМ"-->
-
-    <div class="modal fade bd-example-modal-lg" data-backdrop="static" tabindex="-1"
-         role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <!--/РЯДОК ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
+    <!--МОДАЛЬНЕ ВІКНО-->
+    <div class="modal fade bd-example-modal-lg" data-backdrop="static" tabindex="-1" role="dialog"
+         aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Додати альбом</h5>
-
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">x</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
                     @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
@@ -72,25 +71,18 @@
                                 </div>
                             </div>
                             @*<button type="button" class="btn btn-primary">Додати</button>*@
-                            <div class="row output"></div>
-                            <div class="row">
-                                <button type="button" class="btn btn-secondary btn-md btn-block" data-dismiss="modal">Закрити</button>
-                                <button type="submit" class="btn btn-primary btn-md btn-block" @*disabled*@>Додати</button>
+                            <div class="row output">
                             </div>
+                            <button type="button" class="btn btn-secondary btn-md" data-dismiss="modal">Закрити</button>
+                            <button type="submit" class="btn btn-primary btn-md" @*disabled*@>Додати</button>
                         </div>
                     }
                 </div>
             </div>
         </div>
     </div>
-
-
-
-    <!--/СТОВПЕЦЬ ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
-    <!--СПІЛЬНИЙ РЯДОК ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
-    <!--РЯДОК ДЛЯ КНОПКИ "ДОДАТИ АЛЬБОМ"-->
-    <!--СПІЛЬНИЙ СТОВПЕЦЬ ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
-    <!--СПІЛЬНИЙ РЯДОК ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
+    <!--/МОДАЛЬНЕ ВІКНО-->
+    <!--РЯДОК ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
     <div class="row">
         <!--ALBUM ITEM-->
         @foreach (var item in Model.PhotoAlbums)
@@ -121,9 +113,10 @@
         }
         <!--/ALBUM ITEM-->
     </div>
-    <!--/СПІЛЬНИЙ РЯДОК ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
-    <!--/СПІЛЬНИЙ СТОВПЕЦЬ ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
+    <!--/РЯДОК ДЛЯ ВІДОБРАЖЕННЯ АЛЬБОМІВ-->
+
 </div>
+<!--/СПІЛЬНИЙ КОНТЕЙНЕР "ФОТО АЛЬБОМИ"-->
 
 
 @Scripts.Render("~/PhotoAlbums.js")
