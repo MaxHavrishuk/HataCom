@@ -101,13 +101,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contexts\UserContext.cs" />
+    <Compile Include="Models\Authorization\SignIn.cs" />
+    <Compile Include="Models\Authorization\RegisterModel.cs" />
+    <Compile Include="Models\Enums\Enum.cs" />
+    <Compile Include="Models\Authorization\User.cs" />
     <Compile Include="Models\ViewModels\AddAlbumView.cs" />
     <Compile Include="Repositories\PhotoAlbumsRepository.cs" />
     <Compile Include="Contexts\HataContext.cs" />
     <Compile Include="DbInitialize\DbInitializer.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Models\Photo.cs" />
-    <Compile Include="Models\PhotoAlbum.cs" />
+    <Compile Include="Models\Photo\Photo.cs" />
+    <Compile Include="Models\Photo\PhotoAlbum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PhotoRepository.cs" />
     <Compile Include="StaticConstants\PathsToContent.cs" />

@@ -64,7 +64,7 @@ namespace BusinessLogic.BusinessLogicMethods
 			{
 				//Перевірка чи є в списку фото з відміткою про обложку, якщо ні то обрати перше фото
 				//db.PhotoAlbums.Add(entity).IconLink = photos.Where(e => e.IsCover == 1).FirstOrDefault().ImageLink;
-				if (entity.Photos.Any(e=>e.IsCover == true))
+				if (entity.Photos.Any(e => e.IsCover == true))
 				{
 					entity.IconLink = entity.Photos.Where(e => e.IsCover == true).FirstOrDefault().ImageLink;
 					db.PhotoAlbums.Add(entity);
@@ -76,26 +76,14 @@ namespace BusinessLogic.BusinessLogicMethods
 					db.PhotoAlbums.Add(entity);
 					db.SaveChanges();
 				}
-				
-			
-
-
-				//foreach (var photo in photos)
-				//{
-				//	db.Photos.Add(new Photo() { PhotoAlbumId = entity.PhotoAlbumId, Title = photo.Title, ImageLink = photo.ImageLink });
-				//	db.SaveChanges();
-				//}
 
 				return true;
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
-				var tets = e.Message;
 				return false;
 			}
 		}
-
-
 
 		////перевантажений метод додавання з файлами!!!!
 		//public bool Add(PhotoAlbum entity, IEnumerable<HttpPostedFileBase> files)

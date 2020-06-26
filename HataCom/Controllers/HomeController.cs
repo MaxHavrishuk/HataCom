@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Hosting;
 using System.Web.Mvc;
 
@@ -53,30 +54,35 @@ namespace HataCom.Controllers
 		[HttpPost]
 		public ActionResult Upload(AddAlbumView model)
 		{
-			
+
 			if (ModelState.IsValid)
 			{
-
 				//Потрібно зробити перевірку на формати!!! можливо покращити перевірку на наявність файлів
 				//Вдосконалити перевірку на те чи обрана обложка
-			
-					List<Photo> photos = new List<Photo>();
-					int c = 0;
-					foreach (var file in model.Files)
-					{
-						string fileName = Path.GetFileName(file.FileName);
-						var finalName = Guid.NewGuid() + file.ContentType.Replace('/', '.');
-						string link = Server.MapPath(PathsToContent.PhotosPath + finalName);
-						file.SaveAs(link);
-						photos.Add(new Photo() { ImageLink = PathsToContent.PhotosPath + finalName, Title = model.PhotoAlbum.Photos[c].Title, IsCover = model.PhotoAlbum.Photos[c].IsCover });
-						c++;
-					}
-					//photos[0].IsCover = true;//!!!!!!!!!!!!!!!!!!!!!!!!!!
+				List<Photo> photos = new List<Photo>();
+				int counter = 0;
+				foreach (var file in model.Files)
+				{
+					string fileName = Path.GetFileName(file.FileName);
+					//створення правильного посилання
+					var finalName = Guid.NewGuid() + file.ContentType.Replace('/', '.');
+					string link = Server.MapPath(PathsToContent.PhotosPath + finalName);
+					file.SaveAs(link);
 
-					model.PhotoAlbum.Photos = photos;
-					photoAlbums.AddWithPhotos(model.PhotoAlbum);
-				
-				
+					photos.Add(new Photo()
+					{
+						ImageLink = PathsToContent.PhotosPath + finalName,
+						Title = model.PhotoAlbum.Photos[counter].Title,
+						IsCover = model.PhotoAlbum.Photos[counter].IsCover
+					});
+					counter++;
+				}
+				//photos[0].IsCover = true;//!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+				model.PhotoAlbum.Photos = photos;
+				photoAlbums.AddWithPhotos(model.PhotoAlbum);
+
+
 			}
 			//Фізичне завнатаження файлі на сервер
 
