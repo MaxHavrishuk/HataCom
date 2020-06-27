@@ -167,9 +167,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\PhotoAlbum.cshtml" />
     <Content Include="Views\Home\Music.cshtml" />
     <Content Include="Views\Home\Photos.cshtml" />
+    <Content Include="Views\Home\PhotoAlbum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\mediaContent\Msuic\" />
