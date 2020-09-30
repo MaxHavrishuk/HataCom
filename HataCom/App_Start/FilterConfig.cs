@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace HataCom
@@ -10,4 +12,7 @@ namespace HataCom
 			filters.Add(new HandleErrorAttribute());
 		}
 	}
+
+   
+    
 }

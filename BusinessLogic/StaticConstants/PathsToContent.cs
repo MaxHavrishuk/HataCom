@@ -17,5 +17,8 @@ namespace BusinessLogic.StaticConstants
 
 		//шлях до відео
 		public static string VideosPath { get; } = "/Content/mediaContent/Photo/";
+		
+		//базовий шлях до іконок профілів користувачів
+		public static string UsersPhoto { get; } = "/Content/mediaContent/UsersPhoto/";
 	}
 }

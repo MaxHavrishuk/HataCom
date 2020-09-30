@@ -61,6 +61,9 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -101,12 +104,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contexts\UserContext.cs" />
+    <Compile Include="BusinessLogicMethods\AccountLogic.cs" />
+    <Compile Include="BusinessLogicMethods\SHA.cs" />
+    <Compile Include="Models\Authorization\Role.cs" />
     <Compile Include="Models\Authorization\SignIn.cs" />
     <Compile Include="Models\Authorization\RegisterModel.cs" />
-    <Compile Include="Models\Enums\Enum.cs" />
-    <Compile Include="Models\Authorization\User.cs" />
+    <Compile Include="Models\EnumsAndLists\EnumsAndLists.cs" />
+    <Compile Include="Models\Authorization\UserModel.cs" />
+    <Compile Include="Models\JSON Deserialize Models\PhotoUploadModel.cs" />
     <Compile Include="Models\ViewModels\AddAlbumView.cs" />
+    <Compile Include="Models\ViewModels\RegisterUserView.cs" />
     <Compile Include="Repositories\PhotoAlbumsRepository.cs" />
     <Compile Include="Contexts\HataContext.cs" />
     <Compile Include="DbInitialize\DbInitializer.cs" />
@@ -117,9 +124,7 @@
     <Compile Include="Repositories\PhotoRepository.cs" />
     <Compile Include="StaticConstants\PathsToContent.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessLogicMethods\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

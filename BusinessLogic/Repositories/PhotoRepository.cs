@@ -10,26 +10,48 @@ using System.Web;
 
 namespace HataCom.Repositories
 {
-    public class PhotoRepository : IRepository<Photo>
-    {
+	public class PhotoRepository : IRepository<Photo>
+	{
 		private HataContext db = new HataContext();
 
 		DbInitializer dbInitializer = new DbInitializer();//ініціалізатор для уникання міграцій (dropAndCreateDB) - створення екземплеяра класа
 
 		public Photo Get(int id)
 		{
-			return db.Photos.Find(id);
+			try
+			{
+				return db.Photos.Find(id);
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
 		}
 
 		public IEnumerable<Photo> GetAll()
 		{
-			return db.Photos;
+			try
+			{
+				return db.Photos;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
 		}
 
 		public IEnumerable<Photo> GetPhotosByAlbumId(int albumId)
 		{
-			var photos = db.Photos.Where(e => e.PhotoAlbumId == albumId);
-			return photos;
+			try
+			{
+				var photos = db.Photos.Where(e => e.PhotoAlbumId == albumId);
+				return photos;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
 		}
 
 		public bool Remove(int id)
@@ -61,6 +83,7 @@ namespace HataCom.Repositories
 
 		public bool Update(Photo enitity)
 		{
+
 			try
 			{
 				db.Entry(enitity).State = EntityState.Modified;
@@ -70,11 +93,19 @@ namespace HataCom.Repositories
 			{
 				return false;
 			}
+
 		}
 
 		public void Save()
 		{
-			db.SaveChanges();
+			try
+			{
+				db.SaveChanges();
+			}
+			catch (Exception)
+			{
+				throw;
+			}
 		}
 
 		private bool disposed = false;

@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.DbInitialize;
 using BusinessLogic.Models;
+using BusinessLogic.Models.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -21,6 +22,11 @@ namespace BusinessLogic.Contexts
 		}
 		public DbSet<PhotoAlbum> PhotoAlbums { get; set; }
 		public DbSet<Photo> Photos { get; set; }
+		
+		public DbSet<UserModel> Users { get; set; }
+
+		//Таблиця з ролями користувачів
+		public DbSet<Role> Roles { get; set; }
 
 	}
 

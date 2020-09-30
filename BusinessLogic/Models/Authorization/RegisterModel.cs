@@ -10,6 +10,9 @@ namespace BusinessLogic.Models.Authorization
 {
 	public class RegisterModel
 	{
+		[Key]
+		public string Id { get; set; }
+
 		[Required(ErrorMessage = "Заповніть це поле")]
 		public string Login { get; set; }
 
@@ -27,5 +30,7 @@ namespace BusinessLogic.Models.Authorization
 
 		[Required(ErrorMessage = "Заповніть це поле")]
 		public int Age { get; set; }
+
+		public string ImageLink { get; set; }
 	}
 }

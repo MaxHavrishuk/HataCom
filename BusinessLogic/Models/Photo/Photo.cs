@@ -13,12 +13,12 @@ namespace BusinessLogic.Models
 		[Key]
 		public int PhotoId { get; set; }
 		public int UserId { get; set; }
+
 		public string Title { get; set; }
 
 		public string ImageLink { get; set; }
 
 		public bool IsCover { get; set; }
-
 
 		public int? PhotoAlbumId { get; set; }
 
