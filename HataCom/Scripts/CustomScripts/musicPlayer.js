@@ -129,32 +129,7 @@ $(document).ready(function () {
         $('.setTime').hide();
     });
 
-    function playPauseSong(id) {
-        if (song) {
-            if (id == idSong) {
-                if (song.paused) {
-                    song.play();
-                    $('#' + id).removeClass('btnPlayPauseSongItemActive2').addClass('btnPlayPauseSongItemActive');
-                    $('.btnPlayPause').css('background', 'url("/webplayer/img/Pause.svg") center no-repeat');
-                    classReplacement(id);
-                }
-                else {
-                    song.pause();
-                    $('#' + id).removeClass('btnPlayPauseSongItemActive').addClass('btnPlayPauseSongItemActive2');
-                    $('.btnPlayPause').css('background', 'url("/webplayer/img/Play.svg") center no-repeat');
-                }
-            }
-            else {
-                song.pause();
-                resetPlayer();
-                $('.btnPlayPause').css('background', 'url("/webplayer/img/Pause.svg") center no-repeat');
-                playNewSong(id);
-            }
-        }
-        else {
-            playNewSong(id);
-        }
-    }
+    
 
     function playNewSong(id) {
         var curtime, cur = -100;
