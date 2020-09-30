@@ -1,13 +1,13 @@
 $(document).ready(function () {
     var idSong, song, i, mute = false, volume = 1,
-            songs = [
-           [0, 'Karpyuk', 'No Answers', 'https://drive.google.com/uc?export=download&id=133Oel8COzerC7m63ObhxyNDeL8lDu42F', '235.5035'],
+        songs = [
+            [0, 'Karpyuk', 'No Answers', 'https://drive.google.com/uc?export=download&id=133Oel8COzerC7m63ObhxyNDeL8lDu42F', '235.5035'],
             [1, 'STP', 'On the edge', 'https://drive.google.com/uc?export=download&id=1dgbYB_TSaSbzwU_ZHq4du1AubDOnqreT', '214.4376'],
             [2, 'Karpyuk', 'Runaway', 'https://drive.google.com/uc?export=download&id=1xI8Ee25fosEwT1EQrSlXtuII2xknNu1S', '256.8011'],
             [3, 'Karpyuk', 'Runaway', 'https://drive.google.com/uc?export=download&id=1xI8Ee25fosEwT1EQrSlXtuII2xknNu1S', '256.8011'],
-           
+
         ];
-    
+
 
 
     // <SONG DURATION> 
@@ -17,7 +17,7 @@ $(document).ready(function () {
     // });
     // </SONG DURATION>    
 
- 
+
 
     for (i = 0; i < songs.length; i++) {
         $('.wrp').append(`
@@ -68,6 +68,8 @@ $(document).ready(function () {
             $('.panel').css('opacity', '0')
         }, 1000);
     });
+
+    //vfbffbdbdfbdbdfbfdfbdfdbb
 
     $('.mute').on('click', function () {
         if (song) {
@@ -127,32 +129,7 @@ $(document).ready(function () {
         $('.setTime').hide();
     });
 
-    function playPauseSong(id) {
-        if (song) {
-            if (id == idSong) {
-                if (song.paused) {
-                    song.play();
-                    $('#' + id).removeClass('btnPlayPauseSongItemActive2').addClass('btnPlayPauseSongItemActive');
-                    $('.btnPlayPause').css('background', 'url("/webplayer/img/Pause.svg") center no-repeat');
-                    classReplacement(id);
-                }
-                else {
-                    song.pause();
-                    $('#' + id).removeClass('btnPlayPauseSongItemActive').addClass('btnPlayPauseSongItemActive2');
-                    $('.btnPlayPause').css('background', 'url("/webplayer/img/Play.svg") center no-repeat');
-                }
-            }
-            else {
-                song.pause();
-                resetPlayer();
-                $('.btnPlayPause').css('background', 'url("/webplayer/img/Pause.svg") center no-repeat');
-                playNewSong(id);
-            }
-        }
-        else {
-            playNewSong(id);
-        }
-    }
+    
 
     function playNewSong(id) {
         var curtime, cur = -100;
