@@ -36,7 +36,6 @@ namespace HataCom.Controllers
 		{
 			return View();
 		}
-
 		[HttpPost]
 		public HttpStatusCode Upload(FormCollection formCollection)
 		{
@@ -90,14 +89,13 @@ namespace HataCom.Controllers
 				return HttpStatusCode.BadRequest;
 			}
 		}
-
 		//Test begin
 		public ActionResult PhotoAlbum()
 		{
 			AddAlbumView addAlbumView = new AddAlbumView();
 
 			addAlbumView.PhotoAlbums = photoAlbumsDb.GetAll();
-			
+
 			return View(addAlbumView);
 		}
 
