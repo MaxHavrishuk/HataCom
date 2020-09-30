@@ -131,15 +131,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\UserRolesProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\img\arhiv.jpg" />
     <Content Include="Content\img\fot.jpg" />
     <Content Include="Content\img\musik.jpg" />
     <Content Include="Content\img\vid.jpg" />
-    <Content Include="Content\mediaContent\UsersPhoto\basicUserAdmin.jpg" />
-    <Content Include="Content\Styles\Layout.css" />
     <Content Include="Scripts\CustomScripts\PhotoAlbums.js" />
     <Content Include="Content\Styles\PhotoAlbums.css" />
     <Content Include="Content\Styles\MainPage.css" />
@@ -174,14 +171,12 @@
     <Content Include="Views\Home\Music.cshtml" />
     <Content Include="Views\Home\Photos.cshtml" />
     <Content Include="Views\Home\PhotoAlbum.cshtml" />
-    <Content Include="Views\Account\SignIn.cshtml" />
-    <Content Include="Views\Account\UserPage.cshtml" />
-    <Content Include="Views\Account\SignUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\mediaContent\Msuic\" />
     <Folder Include="Content\mediaContent\Photo\" />
     <Folder Include="Content\mediaContent\Video\" />
+    <Folder Include="Views\Account\" />
     <Folder Include="Views\PhotoAlbums\" />
   </ItemGroup>
   <ItemGroup>

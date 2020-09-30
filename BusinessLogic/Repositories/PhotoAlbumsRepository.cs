@@ -22,26 +22,13 @@ namespace BusinessLogic.BusinessLogicMethods
 
 		public PhotoAlbum Get(int id)
 		{
-			try
-			{
-				return db.PhotoAlbums.Find(id);
-			}
-			catch (Exception)
-			{
-				throw;
-			}
+			return db.PhotoAlbums.Find(id);
 		}
 
 		public IEnumerable<PhotoAlbum> GetAll()
 		{
-			try
-			{
-				return db.PhotoAlbums;
-			}
-			catch (Exception)
-			{
-				throw;
-			}
+
+			return db.PhotoAlbums;
 		}
 
 		public bool Remove(int id)
@@ -77,28 +64,23 @@ namespace BusinessLogic.BusinessLogicMethods
 			{
 				//Перевірка чи є в списку фото з відміткою про обложку, якщо ні то обрати перше фото
 				//db.PhotoAlbums.Add(entity).IconLink = photos.Where(e => e.IsCover == 1).FirstOrDefault().ImageLink;
-				try
+				if (entity.Photos.Any(e => e.IsCover == true))
 				{
-					if (entity.Photos.Any(e => e.IsCover == true))
-					{
-						entity.IconLink = entity.Photos.Where(e => e.IsCover == true).FirstOrDefault().ImageLink;
-						db.PhotoAlbums.Add(entity);
-						db.SaveChanges();
-					}
-					else
-					{
-						entity.IconLink = entity.Photos.First().ImageLink;
-						db.PhotoAlbums.Add(entity);
-						db.SaveChanges();
-					}
+					entity.IconLink = entity.Photos.Where(e => e.IsCover == true).FirstOrDefault().ImageLink;
+					db.PhotoAlbums.Add(entity);
+					db.SaveChanges();
 				}
-				catch (Exception) { throw; }
+				else
+				{
+					entity.IconLink = entity.Photos.First().ImageLink;
+					db.PhotoAlbums.Add(entity);
+					db.SaveChanges();
+				}
 
 				return true;
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
-				var test = ex.Message;
 				return false;
 			}
 		}
@@ -118,6 +100,7 @@ namespace BusinessLogic.BusinessLogicMethods
 		//	}
 		//}
 
+
 		public bool Update(PhotoAlbum enitity)
 		{
 			try
@@ -133,34 +116,27 @@ namespace BusinessLogic.BusinessLogicMethods
 
 		public void Save()
 		{
-			try
-			{
-				db.SaveChanges();
-			}
-			catch (Exception)
-			{
-
-				throw;
-			}
+			db.SaveChanges();
 		}
 
-		private bool disposed = false;
-		protected virtual void Dispose(bool disposing)
-		{
-			if (!this.disposed)
-			{
-				if (disposing)
-				{
-					db.Dispose();
-				}
-			}
-			this.disposed = true;
-		}
+		//private bool disposed = false;
+		//protected virtual void Dispose(bool disposing)
+		//{
+		//	if (!this.disposed)
+		//	{
+		//		if (disposing)
+		//		{
+		//			db.Dispose();
+		//		}
+		//	}
+		//	this.disposed = true;
+		//}
 
-		public void Dispose()
-		{
-			Dispose(true);
-			GC.SuppressFinalize(this);
-		}
+		//public void Dispose()
+		//{
+		//	Dispose(true);
+		//	GC.SuppressFinalize(this);
+		//}
+
 	}
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using BusinessLogic.BusinessLogicMethods;
 using BusinessLogic.Models;
 using BusinessLogic.Models.Authorization;
@@ -86,4 +87,19 @@ namespace HataCom.Controllers
 			return View();
 		}
 	}
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace HataCom.Controllers
+{
+    public class AccountController : Controller
+    {
+        // GET: Account
+      
+    }
+>>>>>>> Max_View
 }

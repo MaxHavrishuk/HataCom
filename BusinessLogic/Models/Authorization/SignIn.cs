@@ -10,11 +10,15 @@ namespace BusinessLogic.Models
 {
 	public class SignIn
 	{
+<<<<<<< HEAD
 		[Required(ErrorMessage = "Заповніть це поле")]
 		public string Login { get; set; }
 
 		[Required(ErrorMessage = "Заповніть це поле")]
 		[DataType(DataType.Password)]
+=======
+		public string Login { get; set; }
+>>>>>>> Max_View
 		public string Password { get; set; }
 	}
 
